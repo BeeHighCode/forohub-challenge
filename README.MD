@@ -1,5 +1,5 @@
 🧠 ForoHub API
-Java Spring Boot OpenAPI MySQL License Proprietary
+Java Spring Boot OpenAPI MySQL License: Proprietary
 
 API RESTful construida con Spring Boot 3.3 para gestionar tópicos y respuestas de un foro técnico. Incluye autenticación JWT, control de acceso con Spring Security, persistencia con JPA/Hibernate y migraciones Flyway. Documentación interactiva con Swagger UI.
 
@@ -41,7 +41,7 @@ Seguridad definida con esquema Bearer JWT (Authorize una sola vez).
 🧩 Endpoints
 Autenticación
 Endpoint	Método	Público	Descripción
-/login	POST	✅	Auténtica al usuario y devuelve JWT
+/login	POST	✅	Autentica al usuario y devuelve JWT
 Tópicos
 Endpoint	Método	Seguridad	Descripción
 /topicos	POST	Protegido	Crear nuevo tópico
@@ -61,31 +61,31 @@ Login (request) → Token (response)
 POST /login
 
 {
-"login": "tu_usuario",
-"password": "tu_password"
+  "login": "tu_usuario",
+  "password": "tu_password"
 }
 200 OK
 
 {
-"jwTtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  "jwTtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 Crear tópico
 POST /topicos
 
 {
-"titulo": "Error al compilar proyecto",
-"mensaje": "Me falla el build en Maven con X error",
-"status": "ABIERTO",
-"autor": 1,
-"curso": 1
+  "titulo": "Error al compilar proyecto",
+  "mensaje": "Me falla el build en Maven con X error",
+  "status": "ABIERTO",
+  "autor": 1,
+  "curso": 1
 }
 Actualizar tópico
 PUT /topicos/{id}
 
 {
-"titulo": "Build falla en CI",
-"mensaje": "Detalle del error actualizado",
-"status": "EN_PROCESO"
+  "titulo": "Build falla en CI",
+  "mensaje": "Detalle del error actualizado",
+  "status": "EN_PROCESO"
 }
 Filtrar por curso y año
 GET /topicos/filtrar?curso=Spring%20Boot&a%C3%B1o=2025
@@ -94,8 +94,8 @@ Registrar respuesta
 POST /respuestas
 
 {
-"topicoId": 1,
-"mensaje": "¿Probaste limpiar el caché de Maven?"
+  "topicoId": 1,
+  "mensaje": "¿Probaste limpiar el caché de Maven?"
 }
 Listar tópicos (paginado)
 GET /topicos?page=0&size=10&sort=fechaCreacion,desc
@@ -151,23 +151,23 @@ Usuarios: las contraseñas deben almacenarse con BCrypt (el proyecto usa BCryptP
 🧪 Probar todo desde Swagger UI y cURL.
 🗂️ Estructura del proyecto
 src/
-├─ main/
-│   ├─ java/com/aluraCursos/ForoHub/
-│   │   ├─ controller/      # Autenticación, Topicos, Respuestas
-│   │   ├─ domain/
-│   │   │   ├─ curso/       # Entidad Curso
-│   │   │   ├─ topico/      # Entidad Topico
-│   │   │   ├─ usuario/     # Entidad Usuario (UserDetails)
-│   │   │   └─ dto/         # Records DTO
-│   │   ├─ infra/
-│   │   │   ├─ errores/     # Manejo de errores
-│   │   │   ├─ security/    # JWT, Filtros, Config
-│   │   │   └─ springdoc/   # Configuración OpenAPI
-│   │   └─ repository/      # Repositorios JPA
-│   └─ resources/
-│       ├─ application.properties
-│       └─ db/migration/    # Scripts Flyway
-└─ test/                    # Pruebas
+ ├─ main/
+ │   ├─ java/com/aluraCursos/ForoHub/
+ │   │   ├─ controller/      # Autenticación, Topicos, Respuestas
+ │   │   ├─ domain/
+ │   │   │   ├─ curso/       # Entidad Curso
+ │   │   │   ├─ topico/      # Entidad Topico
+ │   │   │   ├─ usuario/     # Entidad Usuario (UserDetails)
+ │   │   │   └─ dto/         # Records DTO
+ │   │   ├─ infra/
+ │   │   │   ├─ errores/     # Manejo de errores
+ │   │   │   ├─ security/    # JWT, Filtros, Config
+ │   │   │   └─ springdoc/   # Configuración OpenAPI
+ │   │   └─ repository/      # Repositorios JPA
+ │   └─ resources/
+ │       ├─ application.properties
+ │       └─ db/migration/    # Scripts Flyway
+ └─ test/                    # Pruebas
 🗺️ Roadmap
 Refresh tokens.
 Administración de usuarios/roles vía endpoints.
